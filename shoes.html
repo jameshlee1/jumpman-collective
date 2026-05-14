@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jumpman Collective | Shoes</title>
+  <link rel="icon" type="image/png" href="images/Jordan logo 4.png" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+  <style>
+ :root {
+  --text-color:#111;
+  --accent:#ff3131; /* 🔥 Jordan Infrared */
+  --bg:#ffffff;
+  --overlay-dark:rgba(0,0,0,0.85);
+  --overlay-light:rgba(0,0,0,0.25);
+}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+
+    /* ---------- NAVBAR ---------- */
+header{
+  background:#ffffffcc;
+  backdrop-filter:blur(8px);
+  position:sticky;
+  top:0; z-index:10;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.navbar{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0.75rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.brand{
+  font-weight:800;
+  letter-spacing:0.04em;
+  font-size:1.1rem;
+}
+
+nav{
+  display:flex;
+  gap:1.5rem;
+  align-items:center;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text-color);
+  font-size:.95rem;
+  font-weight:600;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-0.2rem;
+  width:0; height:2px;
+  background:var(--accent);
+  transition:width 0.2s ease;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after{
+  width:100%;
+}
+
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none; /* Hidden by default on desktop */
+      border: none;
+      background: none;
+      padding: 0.25rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-color);
+      margin: 4px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* Mobile specific styles */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none; /* Hide navigation by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg);
+        box-shadow: var(--shadow);
+        padding: 1rem;
+        gap: 1rem;
+      }
+
+      nav.active {
+        display: flex; /* Show navigation when active class is present */
+      }
+
+      .wrap {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+    }
+    
+
+    footer {
+      background: #111111;
+      color: #ffffff;
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: 4rem;
+      width: 100%;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: #b3b3b3;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover,
+    .footer-section a:focus {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      color: #b3b3b3;
+      font-size: 0.85rem;
+    }
+
+    /* ---------- CARDS GENERAL STYLES ---------- */
+    .card, .carousel, .video-thumb, .overlay-card {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    img, video {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      background: #ff0000;
+      color: var(--bg);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .submeta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    .stats {
+      display: flex;
+      gap: 1rem;
+    }
+
+    /* 1) COMPACT POST CARD */
+    .compact {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .compact__text {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .compact__img {
+      width: 180px;
+      height: auto;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* 2) CAROUSEL */
+    .carousel {
+      position: relative;
+      background: #f5f5f5;
+    }
+
+    .track {
+      display: flex;
+      transition: transform 0.3s ease;
+      width: 100%;
+    }
+
+    .track > * {
+        flex-shrink: 0;
+        width: 100%;
+    }
+
+    .carousel img {
+      aspect-ratio: 16/9;
+      min-height: 350px;
+      object-fit: contain;
+    }
+
+    .nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.7);
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    .dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 5px;
+      z-index: 2;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid #ff0000;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: #ff0000;
+    }
+
+    /* 3) VIDEO THUMB */
+    .video-thumb {
+      margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-thumb video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    .video-caption {
+      margin-top: 1rem;
+      padding: 1rem 0;
+      font-size: 1.2rem;
+      font-family: 'helvetica', 'Arial Rounded MT Bold', Arial, sans-serif;
+      font-weight: bold;
+      color: #1a1a1a;
+      text-align: center;
+      letter-spacing: 1.5px;
+      background: linear-gradient(to right, #f40303e7, hwb(0 96% 3% / 0.96));
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+    }
+
+    /* 4) LARGE OVERLAY CARD */
+    .overlay-card {
+      position: relative;
+    }
+
+    .overlay-card img {
+      height: 400px;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      color: white;
+    }
+
+    .overlay .tag {
+      background: white;
+      color: #ff0000;
+      margin-bottom: 0.5rem;
+    }
+
+    .overlay h2 {
+      margin-top: 0;
+    }
+
+    .overlay .meta, .overlay .submeta {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* SIZE CHART SECTION */
+    .table-section {
+      margin: 4rem 0;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 1rem;
+    }
+
+    main ~ .table-section {
+      margin-top: 4rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    thead {
+      background: #111111;
+      color: white;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    tbody tr:hover {
+      background: #f5f5f5;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="brand">Jumpman Collective</div>
+
+      <!-- Mobile menu button -->
+      <button class="menu-toggle"
+              aria-label="Toggle navigation"
+              aria-expanded="false"
+              aria-controls="primary-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation links -->
+      <nav id="primary-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="shoes.html">Shoes</a>
+        <a href="hoodiesandsweatshirts.html">Hoodies & Sweatshirts</a>
+        <a href="shirts.html">Shirts</a>
+        <a href="shorts.html">Shorts</a>
+        <a href="outerwear.html">Outerwear</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- 1) COMPACT POST CARD -->
+    <article class="card compact">
+      <div class="compact__text">
+        <span class="tag" aria-label="category">REVIEWS</span>
+        <h3 class="title">Step Into Greatness: Shop the Latest Jordan Drops.</h3>
+        <p class="meta"><strong>JordanFan23</strong> <span role="img" 
+        <div class="submeta">
+          <time datetime="2025-11-06">18h ago</time>
+          <div class="stats" aria-label="engagement">
+            <span class="stat">23</span>
+            <span class="stat" aria-label="comments">💬 100</span>
+            <span class="stat" aria-label="favorite">⭐</span>
+          </div>
+        </div>
+      </div>
+      <img class="compact__img" src="images/istockbackpack.png" alt="Male red backpack" />
+    </article>
+
+    <!-- 2) FIRST CAROUSEL -->
+    <section class="carousel" aria-roledescription="carousel">
+      <span class="tag tag--ghost">$375</span>
+
+      <button class="nav prev" aria-label="Previous slide">‹</button>
+      <button class="nav next" aria-label="Next slide">›</button>
+
+      <div class="track" role="group" aria-label="slides">
+        <img src="images/Chicago 1.png" alt="Chicago 1" />
+        <img src="images/Panda 1.png" alt="Panda 1" />
+        <img src="images/Hare 1.png" alt="Hare 1" />
+      </div>
+
+      <div class="dots" role="tablist" aria-label="Slide selectors"></div>
+
+      <div class="fade-shadow"></div>
+    </section>
+
+     <!-- 4) VIDEO THUMB -->
+    <figure class="video-thumb">
+      <video 
+        src="videos/shoes 1.mp4" 
+        autoplay 
+        muted 
+        loop 
+        playsinline 
+        style="width: 100%; height: auto; display: block;">
+      </video>
+      <figcaption class="video-caption">
+        Experience Jordan Comfort - Shop Now!
+      </figcaption>
+    </figure>
+
+    <!-- 3) SECOND CAROUSEL -->
+    <section class="carousel" aria-roledescription="carousel2">
+      <span class="tag tag--ghost">$295</span>
+
+      <button class="nav prev" aria-label="Previous slide">‹</button>
+      <button class="nav next" aria-label="Next slide">›</button>
+
+      <div class="track" role="group" aria-label="slides">
+        <img src="images/Cardinal Red 3.png" alt="Cardinal Red 3" />
+        <img src="images/Black Cement 3.png" alt="Black Cement 3" />
+        <img src="images/Midnight Navy 3.png" alt="Midnight Navy 3" /> 
+      </div>
+
+      <div class="dots" role="tablist" aria-label="Slide selectors"></div>
+
+      <div class="fade-shadow"></div>
+    </section>
+
+
+    <!-- 5) LARGE OVERLAY CARD -->
+    <article class="overlay-card">
+      <img src="images/Store2.png" alt="Soft pink flowers close up" />
+      <div class="overlay">
+        <span class="tag">Write a Review</span>
+        <h2>Stay Fresh - Shop Jordan Essentials..</h2>
+        <p class="meta"><strong>SneakerHead1779</strong> <span role="img" 
+        <div class="submeta">
+          <time datetime="2025-11-06">18h ago</time>
+          <div class="stats" aria-label="engagement">
+            <span class="stat">100</span>
+            <span class="stat">💬 503</span>
+            <span class="stat">⭐</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3) THIRD CAROUSEL -->
+    <section class="carousel" aria-roledescription="carousel2">
+      <span class="tag tag--ghost">$320</span>
+
+      <button class="nav prev" aria-label="Previous slide">‹</button>
+      <button class="nav next" aria-label="Next slide">›</button>
+
+      <div class="track" role="group" aria-label="slides">
+        <img src="images/Carmine 6.png" alt="Carmine 6" />
+        <img src="images/Infrared 6.png" alt="Infrared 6" />
+        <img src="images/Olympic 6.png" alt="Olympic 6" /> 
+      </div>
+
+      <div class="dots" role="tablist" aria-label="Slide selectors"></div>
+
+      <div class="fade-shadow"></div>
+    </section>
+
+  </main>
+
+  
+
+  <!-- SIZE CHART SECTION -->
+  <section class="table-section">
+    <h2>Size Guide</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>US Men's</th>
+          <th>US Women's</th>
+          <th>UK</th>
+          <th>EU</th>
+          <th>CM</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>6</td>
+          <td>7.5</td>
+          <td>5.5</td>
+          <td>38.5</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>8.5</td>
+          <td>6</td>
+          <td>40</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>9.5</td>
+          <td>7</td>
+          <td>41</td>
+          <td>26</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>10.5</td>
+          <td>8</td>
+          <td>42.5</td>
+          <td>27</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>11.5</td>
+          <td>9</td>
+          <td>44</td>
+          <td>28</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>12.5</td>
+          <td>10</td>
+          <td>45</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>13.5</td>
+          <td>11</td>
+          <td>46</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>14.5</td>
+          <td>12</td>
+          <td>47.5</td>
+          <td>31</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="shoes.html">Shoes</a></li>
+          <li><a href="hoodiesandsweatshirts.html">Hoodies & Sweatshirts</a></li>
+          <li><a href="shirts.html">Shirts</a></li>
+          <li><a href="shorts.html">Shorts</a></li>
+          <li><a href="outerwear.html">Outerwear</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="index.html">Jumpman Collective</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contactus.html">Contact Us</a></li>
+          <li><a href="https://www.ups.com/track?loc=en_US&requester=ST/">Shipping Info</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jumpman Collective | All Rights Reserved | Web Design I | James H. Lee
+      </p>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    /* Minimal accessible carousel - initialize all carousels */
+    (() => {
+      const carousels = document.querySelectorAll('.carousel');
+      
+      carousels.forEach(root => {
+        const track = root.querySelector('.track');
+        const slides = [...track.children];
+        const prev = root.querySelector('.prev');
+        const next = root.querySelector('.next');
+        const dotsWrap = root.querySelector('.dots');
+
+        let index = 0;
+
+        // Build dots
+        slides.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.className = 'dot';
+          b.setAttribute('role','tab');
+          b.setAttribute('aria-label', 'Go to slide ' + (i+1));
+          b.addEventListener('click', () => go(i));
+          dotsWrap.appendChild(b);
+        });
+
+        const dots = [...dotsWrap.children];
+
+        function go(i) {
+          index = (i + slides.length) % slides.length;
+          track.style.transform = `translateX(${-index * 100}%)`;
+          // Update active dot
+          dots.forEach((d, di) => d.classList.toggle('active', di === index));
+        }
+
+        prev.addEventListener('click', () => go(index - 1));
+        next.addEventListener('click', () => go(index + 1));
+        go(0); // Initialize carousel to first slide and activate first dot
+      });
+    })();
+  </script>
+
+  <script>
+    /* Mobile menu toggle */
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('primary-nav');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Optional: close menu when a link is tapped on mobile
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+          nav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

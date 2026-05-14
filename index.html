@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jumpman Collective | Home</title>
+  <link rel="icon" type="image/png" href="images/Jordan logo 4.png" />
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root {
+  --text-color:#111;
+  --accent:#ff3131; /* 🔥 Jordan Infrared */
+  --bg:#ffffff;
+  --overlay-dark:rgba(0,0,0,0.85);
+  --overlay-light:rgba(0,0,0,0.25);
+}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-color);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+
+    /* ---------- NAVBAR ---------- */
+header{
+  background:#ffffffcc;
+  backdrop-filter:blur(8px);
+  position:sticky;
+  top:0; z-index:10;
+  border-bottom:1px solid #e5e5e5;
+}
+
+.navbar{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0.75rem 1rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.brand{
+  font-weight:800;
+  letter-spacing:0.04em;
+  font-size:1.1rem;
+}
+
+nav{
+  display:flex;
+  gap:1.5rem;
+  align-items:center;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--text-color);
+  font-size:.95rem;
+  font-weight:600;
+  position:relative;
+}
+
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-0.2rem;
+  width:0; height:2px;
+  background:var(--accent);
+  transition:width 0.2s ease;
+}
+
+nav a:hover::after,
+nav a:focus-visible::after{
+  width:100%;
+}
+
+    /* Mobile menu button */
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      padding: 0.25rem;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-color);
+      margin: 4px 0;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* ---------- MAIN LAYOUT ---------- */
+    main {
+      max-width: 2200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 2.6rem);
+      margin-bottom: 5.25rem;
+      color: var(--accent);
+    }
+
+
+    .hero-logo {
+      display: block;
+      margin: 1.5rem auto;
+      max-width: 500px;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 0;
+      font-size: 0.98rem;
+    }
+
+    .secondary-logo {
+      display: block;
+      margin: 3rem auto 0;
+      max-width: 350px;
+      width: 100%;
+      height: auto;
+    }
+
+    
+
+    /* ---------- RESPONSIVE NAV ---------- */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.75rem 1rem;
+      }
+
+      nav {
+        position: absolute;
+        inset: 100% 0 auto 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.75rem 1rem 1rem;
+        gap: 0.75rem;
+        display: none; /* hidden by default on mobile */
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
+
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      /* when nav has .active, show it */
+      nav.active {
+        display: flex;
+      }
+    }
+
+    
+
+    footer {
+      background: #111111;
+      color: #ffffff;
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .footer-content {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-section h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-section a {
+      color: #b3b3b3;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover,
+    .footer-section a:focus {
+      color: #ffffff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      color: #b3b3b3;
+      font-size: 0.85rem;
+    }
+
+   
+    
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="brand">Jumpman Collective</div>
+    <!-- Mobile menu button -->
+    <button class="menu-toggle"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="primary-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- Navigation links -->
+    <nav id="primary-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="shoes.html">Shoes</a>
+      <a href="hoodiesandsweatshirts.html">Hoodies & Sweatshirts</a>
+      <a href="shirts.html">Shirts</a>
+      <a href="shorts.html">Shorts</a>
+      <a href="outerwear.html">Outerwear</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Jumpman Collective | Shoes & Apparel</h1>
+    <div class="index-content">
+      <div class="index-image">
+        <img src="images/Jordan-Logo-1.png" alt="Jordan Logo 1">
+      </div>
+      <div class="index-text">
+        <p>At Jumpman Collective, our passion for iconic style fuels everything we do. Celebrating the heritage of Air Jordan, we bring sneaker enthusiasts and trendsetters the latest and greatest in shoes and apparel.</p>
+      </div>
+      <div class="index-image">
+        <img src="images/Jordan-Logo-2.png" alt="Jordan Logo 2">
+      </div>
+      <div class="index-text">
+        <p>From legendary releases to fresh gear, our collection delivers the energy of the court, the street, and beyond. Whether you’re chasing classics or new drops, we’re here to help you step out with confidence and live the legacy every day.</p>
+        <a href="about.html" class="btn">Shop Jumpman Collective</a>
+      </div>
+      <div class="index-image">
+        <img src="images/Male1.png" alt="Basketball player model">
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="shoes.html">Shoes</a></li>
+          <li><a href="hoodiesandsweatshirts.html">Hoodies & Sweatshirts</a></li>
+          <li><a href="shirts.html">Shirts</a></li>
+          <li><a href="shorts.html">Shorts</a></li>
+          <li><a href="outerwear.html">Outerwear</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>About</h3>
+        <ul>
+          <li><a href="index.html">Jumpman Collective</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="contactus.html">Contact Us</a></li>
+          <li><a href="https://www.ups.com/track?loc=en_US&requester=ST/">Shipping Info</a></li>
+        
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect</h3>
+        <ul>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Jumpman Collective | All Rights Reserved | Web Design I | James H. Lee
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.getElementById('primary-nav');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Optional: close menu when a link is tapped on mobile
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>
+</body>
+</html>
