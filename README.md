@@ -1,1 +1,1 @@
-# jumpmancollective
+# jumpman-collective
